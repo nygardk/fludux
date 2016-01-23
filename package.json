@@ -1,7 +1,7 @@
 {
   "name": "fludux",
   "version": "0.1.0",
-  "description": "Ease your migration from Flux to Redux",
+  "description": "Connect your React components to Flux stores like you do with Redux.",
   "main": "build/fludux.js",
   "scripts": {
     "build": "webpack -p --progress",
