@@ -1,0 +1,7 @@
+/.*
+
+/coverage/
+/test/
+
+/karma.conf.*.js
+/webpack.*

@@ -40,7 +40,7 @@ module.exports = {
   ],
   eslint: {
     failOnWarning: false,
-    failOnError: true,
+    failOnError: false,
     configFile: '.eslintrc'
   }
 };

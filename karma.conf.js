@@ -1,7 +1,6 @@
 const path = require('path');
 const webpackConfig = require('./webpack.config');
 
-webpackConfig.resolve.root.push(path.resolve('./test'));
 webpackConfig.devtool = 'inline-source-map';
 delete webpackConfig.entry;
 
@@ -27,12 +26,13 @@ module.exports = function(config) {
 
     webpackMiddleware: {
       stats: {
-        color: true
+        chunkModules: false,
+        colors: true,
       },
       noInfo: true
     },
 
-    reporters: ['progress'],
+    reporters: ['dots'],
 
     port: 9876,
 
@@ -45,6 +45,6 @@ module.exports = function(config) {
     browsers: ['PhantomJS'],
 
     singleRun: false,
-    concurrency: Infinity
+    concurrency: Infinity,
   });
 };
