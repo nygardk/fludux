@@ -9,10 +9,9 @@ module.exports = function(config) {
   config.set({
     basePath: '',
 
-    frameworks: ['jasmine'],
+    frameworks: ['es5-shim', 'jasmine'],
 
     files: [
-      {pattern: 'node_modules/react-tools/src/test/phantomjs-shims.js', watched: false, included: true, served: true},
       {pattern: 'test/**/*-spec.js', watched: false, included: true, served: true},
     ],
 
