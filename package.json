@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack -p --progress",
     "test": "NODE_ENV=test karma start",
-    "test-coverage": "NODE_ENV=test karma start karma.conf.coverage.js"
+    "test-coverage": "NODE_ENV=test karma start karma.conf.coverage.js",
+    "test:travis": "npm run test -- --single-run"
   },
   "repository": {
     "type": "git",

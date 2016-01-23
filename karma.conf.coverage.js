@@ -20,8 +20,11 @@ module.exports = function(config) {
     reporters: ['dots', 'coverage'],
 
     coverageReporter: {
-      type: 'html',
-      dir: 'coverage/'
+      type: 'lcov',
+      dir: 'coverage/',
+      instrumenterOptions: {
+        istanbul: { noCompact: true }
+      },
     },
 
     singleRun: true,
