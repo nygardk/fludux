@@ -2,6 +2,7 @@ const path = require('path');
 const webpackConfig = require('./webpack.config');
 
 webpackConfig.devtool = 'inline-source-map';
+delete webpackConfig.externals;
 delete webpackConfig.entry;
 
 module.exports = function(config) {

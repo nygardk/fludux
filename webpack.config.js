@@ -10,8 +10,10 @@ module.exports = {
     fludux: 'fludux'
   },
   output: {
-    path: path.resolve('./build'),
-    filename: '[name].js'
+    path: path.resolve('./lib'),
+    filename: 'index.js',
+    library: 'fludux',
+    libraryTarget: 'umd'
   },
   resolve: {
     root: [
@@ -35,8 +37,11 @@ module.exports = {
       }
     ]
   },
+  externals: {
+    'react': 'react'
+  },
   plugins: [
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
   ],
   eslint: {
     failOnWarning: false,

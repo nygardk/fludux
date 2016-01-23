@@ -8,6 +8,7 @@ webpackConfig.module.postLoaders = [{
   exclude: /(test|node_modules)/,
   loader: 'istanbul-instrumenter'
 }];
+delete webpackConfig.externals;
 delete webpackConfig.entry;
 
 module.exports = function(config) {
