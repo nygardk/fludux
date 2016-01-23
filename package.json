@@ -1,8 +1,12 @@
 {
   "name": "fludux",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Connect your React components to Flux stores like you do with Redux.",
-  "main": "build/fludux.js",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
     "build": "webpack -p --progress",
     "test": "NODE_ENV=test karma start",
@@ -14,6 +18,7 @@
     "url": "git+https://github.com/nygardk/fludux.git"
   },
   "keywords": [
+    "fludux",
     "React",
     "component",
     "connect",
