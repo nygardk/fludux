@@ -45,9 +45,10 @@ arguments.
 ### Simple example
 
 __Your React component connected to a Flux store without Fludux__:
-import MyStore from 'MyStore';
 
 ```js
+import MyStore from 'MyStore';
+
 function getState() {
   return {
     someValue: MyStore.getSomeValue()
