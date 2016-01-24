@@ -206,10 +206,6 @@ describe('connected component to a single store', () => {
     element = TestUtils.renderIntoDocument(<ConnectedComponent />, node);
   });
 
-  // afterEach(() => {
-  //   ConnectedComponent.componentWillUnmount();
-  // });
-
   it('should be rendered with the initial values from store', () => {
     expect(findDOMNode(element).textContent).toEqual('1');
   });
