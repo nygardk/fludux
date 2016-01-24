@@ -44,8 +44,8 @@ arguments.
 
 ### Simple example
 
-
 __Your React component connected to a Flux store without Fludux__:
+import MyStore from 'MyStore';
 
 ```js
 function getState() {
@@ -87,6 +87,7 @@ __Your React component with Fludux__:
 
 ```js
 import { connectToStore } from 'fludux';
+import MyStore from 'MyStore';
 
 const MyComponent = React.createClass({
   propTypes: {
@@ -110,10 +111,13 @@ export default connectToStore(MyStore, store => ({
 
 ```js
 import { connectToStores } from 'fludux';
+import MyStore1 from 'MyStore1';
+import MyStore2 from 'MyStore2';
 
 const MyComponent = React.createClass({
   propTypes: {
-    someValue: React.PropTypes.string
+    someValue1: React.PropTypes.string,
+    someValue2: React.PropTypes.string
   },
 
   render() {
