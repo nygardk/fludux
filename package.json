@@ -63,7 +63,7 @@
     "webpack": "^1.12.11"
   },
   "peerDependencies": {
-    "react": "^0.13.0"
+    "react": "^0.13.0 || ^0.14.0"
   },
   "engines": {
     "npm": "5.x.x"
