@@ -8,10 +8,11 @@
     "src"
   ],
   "scripts": {
-    "build": "webpack -p --progress",
+    "build": "webpack --progress",
     "test": "NODE_ENV=test karma start",
     "test-coverage": "NODE_ENV=test karma start karma.conf.coverage.js",
-    "test:travis": "npm run test -- --single-run"
+    "test:travis": "npm run test -- --single-run",
+    "prepublish": "npm run test:travis && npm run build"
   },
   "repository": {
     "type": "git",
