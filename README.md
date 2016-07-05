@@ -18,11 +18,21 @@ npm install --save fludux
 
 ## API
 
-Fludux exports two higher order functions: `connectToStore` and
-`connectToStores`.
+Fludux exports two higher order functions to connect to any Flux store:
+`connectToStore` and `connectToStores`.
 
 ```js
 import { connectToStore, connectToStores } from 'fludux';
+```
+
+<br />
+Additionally, Fludux provides store creation utility functions `createStore`
+and `createDispatcherCallback` that can help you create a store with a state
+reducer function. You do not have to use these in order to use `connectToStore`
+or `connectToStores`.
+
+```js
+import { createStore, createDispatcherCallback } from 'fludux';
 ```
 
 #### connectToStore(store, mapStateToProps, config) -> connector(component)
@@ -36,13 +46,27 @@ but they have different names, you can set them here. See examples below.
 
 #### connectToStores(storeMappings) -> connector(component)
 
-__`storeMapping`__ is an array of objects with following the properties:
+__`storeMapping`__ (array{object}) : an array of objects with the following properties:
 `store` , `mapStateToProps`, `config`. They work simirlaly as connectToStore
 arguments.
 
+#### createStore(initialState) -> store
+
+__`initialState`__ (object): the initial state object of your state.
+E.g. `{isLoading: false}`.
+
+__`store`__ (object): created Flux store with methods `emitChange`,
+`addChangeListener`, `removeChangeListener`, `getState` and `setState`.
+
+#### createDispatcherCallback(reducer, store) -> actionCallback(action)
+
+__`reducer`__ (function): a reducer function that gets previous state as first
+parameter, and the action object as second parameter. Returns new state.
+(See an example below).
+
 ## Examples
 
-### Simple example
+### Connection to a store: a simple example
 
 __Your React component connected to a Flux store without Fludux__:
 
@@ -142,6 +166,43 @@ export default connectToStores([
     }
   }
 ])(MockComponent);
+```
+
+### Creating a store with createStore and createDispatcherCallback
+
+```js
+import { createStore, createDispatcherCallback } from 'fludux';
+import AppDispatcher from 'some/where/AppDispatcher';
+
+const INITIAL_STATE = {isLoading: false};
+
+const MyStore = createStore(INITIAL_STATE);
+
+const myStoreReducer = function(state, action) {
+  switch (action.type) {
+    case 'LOADING_START':
+      return {
+        ...state,
+        isLoading: true
+      };
+
+    case 'LOADING_DONE':
+      return {
+        ...state,
+        isLoading: false
+      };
+
+    default:
+      return state;
+  }
+}
+
+AppDispatcher.register(createDispatcherCallback(
+  myStoreReducer,
+  MyStore
+));
+
+export default MyStore;
 ```
 
 ## License
