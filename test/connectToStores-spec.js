@@ -1,3 +1,4 @@
+/* eslint-disable react/prefer-stateless-function */
 import { EventEmitter } from 'events';
 import TestUtils from 'react-addons-test-utils';
 import React from 'react';
@@ -191,11 +192,9 @@ describe('connected component to a single store', () => {
     },
   });
 
-  const ConnectedComponent = connectToStore(mockStore1, store => {
-    return {
-      testValue: store.getTestValue(),
-    };
-  })(MockComponent);
+  const ConnectedComponent = connectToStore(mockStore1, store => ({
+    testValue: store.getTestValue(),
+  }))(MockComponent);
 
   let node;
   let element;
